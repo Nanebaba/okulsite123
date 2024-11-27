@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .card h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .input-group input:focus {
+            border: 2px solid #ff758c;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #ff758c;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #ff4e78;
+        }
+
+        .separator {
+            margin: 20px 0;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        .link {
+            color: #ff758c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Create an Account</h1>
+    <form id="signupForm" onsubmit="handleSignup(event)">
+        <div class="input-group">
+            <label for="newUsername">Username</label>
+            <input type="text" id="newUsername" placeholder="Choose a username" required>
+        </div>
+        <div class="input-group">
+            <label for="newPassword">Password</label>
+            <input type="password" id="newPassword" placeholder="Choose a password" required>
+        </div>
+        <div class="input-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+        </div>
+        <button type="submit" class="btn">Sign Up</button>
+    </form>
+
+    <div class="separator">Already have an account?</div>
+
+    <a href="index.html" class="link">Login here</a>
+</div>
+
+<script>
+    function handleSignup(event) {
+        event.preventDefault();
+
+        const username = document.getElementById('newUsername').value.trim();
+        const password = document.getElementById('newPassword').value.trim();
+        const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        // Simulate storing user credentials in localStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const userExists = users.some(user => user.username === username);
+
+        if (userExists) {
+            alert("Username already exists. Please choose another one.");
+        } else {
+            users.push({ username, password });
+            localStorage.setItem('users', JSON.stringify(users));
+            alert("Sign-up successful! Redirecting to login...");
+            window.location.href = 'index.html'; // Redirect to login page
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional English Learning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #f0f4f8, #d9e8fc);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 20px 10%;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        .container {
+            flex: 1;
+            padding: 40px 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .welcome {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .progress-section {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .progress-bar-container {
+            background: #e0e0e0;
+            border-radius: 25px;
+            overflow: hidden;
+            width: 100%;
+            height: 25px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #4CAF50;
+            width: 70%; /* Example progress */
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .button {
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            background: #45a049;
+        }
+
+        footer {
+            background: #f0f4f8;
+            text-align: center;
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Media Query for Responsiveness */
+        @media (max-width: 768px) {
+            .welcome {
+                font-size: 1.5rem;
+            }
+
+            .button {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>English Learning Platform</h1>
+</header>
+
+<div class="container">
+    <div class="welcome">Welcome back, <span id="username-display">User</span>!</div>
+
+    <div class="progress-section">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="progress-text" id="progress-text">70% of your daily goal completed</div>
+    </div>
+
+    <div class="buttons-container">
+        <button class="button" onclick="navigateTo('categories')">Start Learning</button>
+        <button class="button" onclick="navigateTo('profile')">Profile</button>
+        <button class="button" onclick="navigateTo('stats')">Statistics</button>
+        <button class="button" onclick="navigateTo('settings')">Settings</button>
+    </div>
+</div>
+
+<footer>
+    © 2024 English Learning Platform - All rights reserved.
+</footer>
+
+<script>
+    // Example: Dynamic User Data
+    const username = "John Doe"; // Example username
+    const progress = 70; // Example progress percentage
+
+    document.getElementById('username-display').textContent = username;
+    document.getElementById('progress-bar').style.width = `${progress}%`;
+    document.getElementById('progress-text').textContent = `${progress}% of your daily goal completed`;
+
+    function navigateTo(page) {
+        alert(`Navigating to ${page}...`);
+        // Add page navigation logic
+    }
+</script>
+
+</body>
+</html>
