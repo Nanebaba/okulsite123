@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>site deneme - Login</title>
+    <title>LangZone - Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            background: url('https://images.unsplash.com/photo-1517832606293-9352ea3965a6?crop=entropy&fit=crop&w=1350&h=900&q=80') no-repeat center center/cover;
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,19 +18,30 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             text-align: center;
         }
 
-        .card h1 {
-            font-size: 2rem;
+        .card img {
+            width: 80px;
             margin-bottom: 20px;
+        }
+
+        .card h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            margin-bottom: 25px;
+            color: #ddd;
         }
 
         .input-group {
@@ -40,31 +51,38 @@
         .input-group label {
             display: block;
             text-align: left;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
             color: #ccc;
         }
 
         .input-group input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: none;
             border-radius: 5px;
             outline: none;
             font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .input-group input::placeholder {
+            color: #ccc;
         }
 
         .input-group input:focus {
             border: 2px solid #6a11cb;
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .btn {
             display: block;
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: none;
             border-radius: 5px;
-            background: #6a11cb;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
             color: white;
             font-size: 1.1rem;
             cursor: pointer;
@@ -72,7 +90,7 @@
         }
 
         .btn:hover {
-            background: #2575fc;
+            background: linear-gradient(90deg, #2575fc, #6a11cb);
         }
 
         .separator {
@@ -90,12 +108,20 @@
         .link:hover {
             text-decoration: underline;
         }
+
+        .error-message {
+            color: #ff6b6b;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
 
 <div class="card">
+    <img src="https://via.placeholder.com/80?text=LZ" alt="LangZone Logo">
     <h1>Welcome to LangZone</h1>
+    <p>Your partner in language learning.</p>
     <form id="loginForm" onsubmit="handleLogin(event)">
         <div class="input-group">
             <label for="username">Username</label>
@@ -106,6 +132,7 @@
             <input type="password" id="password" placeholder="Enter your password" required>
         </div>
         <button type="submit" class="btn">Login</button>
+        <div id="error" class="error-message"></div>
     </form>
 
     <div class="separator">or</div>
@@ -118,35 +145,21 @@
         event.preventDefault();
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value.trim();
+        const errorDiv = document.getElementById('error');
+        errorDiv.textContent = ''; // Clear previous error
 
-        if (username && password) {
-            // Simulate login (in a real app, send credentials to a backend)
-            localStorage.setItem('username', username);
-            alert('Login successful! Redirecting to games...');
-            window.location.href = 'games.html'; // Redirect to the games page
-        } else {
-            alert('Please enter valid credentials.');
-        }
-    }
-
-    function handleLogin(event) {
-        event.preventDefault();
-    
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value.trim();
         const users = JSON.parse(localStorage.getItem('users')) || [];
-    
-        const user = users.find(user => user.username === username && user.password === password);
-    
+
+        const user = users.find(u => u.username === username && u.password === password);
+
         if (user) {
-            localStorage.setItem('isLoggedIn', 'true'); // Giriş yapıldı
-            alert('Login successful! Redirecting to Games page...');
-            window.location.href = 'games.html'; // Oyunlar sayfasına yönlendir
+            localStorage.setItem('isLoggedIn', 'true');
+            alert(`Welcome back, ${username}! Redirecting to the learning dashboard.`);
+            window.location.href = 'dashboard.html';
         } else {
-            alert('Incorrect username or password.');
+            errorDiv.textContent = 'Incorrect username or password. Please try again.';
         }
     }
-    
 </script>
 
 </body>
