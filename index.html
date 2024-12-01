@@ -7,14 +7,15 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: url('https://files.oaiusercontent.com/file-Sd4GuWRTRum8E65Lws5xZb?se=2024-12-01T22%3A53%3A45Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D11ac2267-8ae7-4f65-81d2-394dc37b30c9.webp&sig=NaoCNgkfr3KcIRkQqNfKCey2lXNlInIp6ryZfxd69dA%3D') no-repeat center center/cover;
+            background: url('https://cdn.discordapp.com/attachments/1312916319665918064/1312921216159453255/images.png?ex=674e40aa&is=674cef2a&hm=4c6e40e758671c240a0eaabfb3f71cf4da1f4035697f8081ad18c4562e6e6161&') no-repeat center center/cover;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            position: relative;
         }
 
         .card {
@@ -41,7 +42,7 @@
         .card p {
             font-size: 1rem;
             margin-bottom: 25px;
-            color: #000000;
+            color: #ffffff;
         }
 
         .input-group {
@@ -53,7 +54,7 @@
             text-align: left;
             margin-bottom: 8px;
             font-size: 0.95rem;
-            color: #000000;
+            color: #ffebeb;
         }
 
         .input-group input {
@@ -64,15 +65,15 @@
             outline: none;
             font-size: 1rem;
             background: rgba(255, 255, 255, 0.1);
-            color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
         }
 
         .input-group input::placeholder {
-            color: #000;
+            color: #ffffff;
         }
 
         .input-group input:focus {
-            border: 2px solid #000000;
+            border: 2px solid #ffffff;
             background: rgba(255, 0, 0, 0.2);
         }
 
@@ -82,21 +83,21 @@
             padding: 12px;
             border: none;
             border-radius: 5px;
-            background: linear-gradient(90deg, #6a11cb, #25fca2);
-            color: rgb(0, 0, 0);
+            background: linear-gradient(90deg, #000000, #000000);
+            color: rgb(255, 255, 255);
             font-size: 1.1rem;
             cursor: pointer;
             transition: background 0.3s ease;
         }
 
         .btn:hover {
-            background: linear-gradient(90deg, #25fc49, #6a11cb);
+            background: linear-gradient(90deg, #000000, #000000);
         }
 
         .separator {
             margin: 20px 0;
             font-size: 0.9rem;
-            color: #000000;
+            color: #ffffff;
         }
 
         .link {
@@ -114,12 +115,34 @@
             margin-top: 10px;
             font-size: 0.9rem;
         }
+
+        /* Feedback Button Styles */
+        .feedback-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff9a02;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .feedback-btn:hover {
+            background: #ff7402;
+        }
     </style>
 </head>
 <body>
 
+<!-- Feedback Button -->
+<button class="feedback-btn" onclick="goToFeedbacksPage()">Feedbacks</button>
+
 <div class="card">
-    <img src="https://files.oaiusercontent.com/file-Sd4GuWRTRum8E65Lws5xZb?se=2024-12-01T22%3A53%3A45Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D11ac2267-8ae7-4f65-81d2-394dc37b30c9.webp&sig=NaoCNgkfr3KcIRkQqNfKCey2lXNlInIp6ryZfxd69dA%3D" alt="LangZone Logo">
+    <img src="https://static.vecteezy.com/system/resources/previews/003/740/677/large_2x/lz-logo-monogram-with-slash-style-design-template-free-vector.jpg" alt="LangZone Logo">
     <h1>Welcome to LangZone</h1>
     <p>Your partner in language learning.</p>
     <form id="loginForm" onsubmit="handleLogin(event)">
@@ -159,6 +182,10 @@
         } else {
             errorDiv.textContent = 'Incorrect username or password. Please try again.';
         }
+    }
+
+    function goToFeedbacksPage() {
+        window.location.href = 'feedbacks.html';
     }
 </script>
 
